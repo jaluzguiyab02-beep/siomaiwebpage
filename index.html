@@ -5,116 +5,159 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chick'n Blossom</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
+html{scroll-behavior:smooth;}
+
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:linear-gradient(135deg,#fff8e1,#ffe082,#ffd54f);
+font-family:'Poppins', sans-serif;
+background:#f5f7fa;
 color:#333;
-animation:fadePage 1s ease;
-}
-
-@keyframes fadePage{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-.container{
-width:90%;
-max-width:1100px;
-margin:auto;
 }
 
 .hero-header{
+background:linear-gradient(135deg,#fff8e1,#ffe082,#ffd54f);
+padding:70px 0;
+text-align:center;
+}
+
+.header-box{
+width:90%;
+max-width:1200px;
+margin:auto;
+background:linear-gradient(135deg,#ffcc33,#ffb300,#ffa000);
+border-radius:20px;
+padding:50px;
 display:flex;
 align-items:center;
-justify-content:space-between;
-flex-wrap:wrap;
-background:linear-gradient(135deg,#ffcc33,#ffb300,#ffa000);
-padding:80px 20px;
+justify-content:center;
+flex-direction:column;
 color:#4e342e;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+opacity:0;
+transform:translateY(30px);
+transition:all 0.8s ease;
 }
 
-.hero-header div{
-animation:slideDown 1s ease;
+.header-box.visible {
+opacity:1;
+transform:translateY(0);
 }
 
-@keyframes slideDown{
-from{transform:translateY(-40px);opacity:0;}
-to{transform:translateY(0);opacity:1;}
+.header-left{
+display:flex;
+align-items:center;
+flex-direction:column;
+gap:15px;
 }
 
-.hero-header img{
-display:block;
-margin-bottom:15px;
+.header-left img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-.hero-header h1{
-font-size:52px;
+.header-left h1{
 margin:0;
+font-size:52px;
+text-align:center;
 }
 
 .tagline{
-font-size:22px;
-font-weight:bold;
-margin-top:10px;
+font-size:20px;
+font-weight:600;
+margin-top:5px;
+text-align:center;
 }
 
-.hero{
+.about, .order{
+padding:80px 20px;
 text-align:center;
-padding:40px 20px;
+}
+
+.about-box, .order-box, .card{
+max-width:800px;
+margin:auto;
+background:white;
+border-radius:20px;
+padding:40px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+opacity:0;
+transform: translateY(30px);
+transition: all 0.8s ease;
+}
+
+.about-box.visible, .order-box.visible, .card.visible{
+opacity:1;
+transform: translateY(0);
+}
+
+.about h2{
+font-size:32px;
+margin-bottom:20px;
+color:#4e342e;
+}
+
+.about img{
+max-width:300px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+margin-top:20px;
 }
 
 .products{
 display:flex;
 justify-content:center;
-gap:30px;
+gap:35px;
 flex-wrap:wrap;
-padding:60px 20px;
+padding:80px 20px;
+background:white;
 }
 
 .card{
-background:white;
+background:#fff;
 padding:30px;
-width:230px;
-border-radius:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
+width:260px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 text-align:center;
-transition: all 0.4s ease;
+transition:0.4s;
+border-top:6px solid #ff9800;
+opacity:0;
+transform: translateY(20px);
 }
 
 .card:hover{
-transform: translateY(-12px) scale(1.05) rotate(-1deg);
-box-shadow: 0 20px 40px rgba(255, 165, 0, 0.3);
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
 .price{
 color:#ff6f00;
 font-size:22px;
 font-weight:bold;
-margin:10px 0;
-}
-
-.order{
-text-align:center;
-padding:60px 20px;
+margin:5px 0;
 }
 
 .order button{
-background:#ff9800;
+background:linear-gradient(135deg,#ff9800,#f57c00);
 border:none;
-padding:14px 30px;
+padding:15px 35px;
 font-size:16px;
 border-radius:50px;
 color:white;
 cursor:pointer;
-transition:all 0.3s ease;
-margin-top:20px;
+font-weight:600;
+transition:0.3s;
 }
 
 .order button:hover{
-background:#f57c00;
-transform:scale(1.05);
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(0,0,0,0.25);
 }
 
 .socials{
@@ -132,122 +175,118 @@ border-radius:50px;
 background:#ffe082;
 color:#4e342e;
 font-weight:bold;
-transition:all 0.3s ease;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-display:inline-block;
+transition:0.3s;
 }
 
 .socials a:hover{
 background:#ffd54f;
-transform:scale(1.1);
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
-animation:pop 0.3s ease;
-}
-
-@keyframes pop{
-0%{transform:scale(1);}
-50%{transform:scale(1.12);}
-100%{transform:scale(1.1);}
-}
-
-/* Fade-in animation for staggered effect */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  animation:fadeUp 0.8s forwards;
-}
-
-@keyframes fadeUp{
-to {
-opacity:1;
-transform:translateY(0);
-}
+transform:scale(1.08);
 }
 
 footer{
 text-align:center;
-padding:30px;
+padding:40px;
 background:#ffcc33;
 color:#4e342e;
-font-weight:bold;
-border-top:2px solid #ffa000;
-opacity:0;
-animation:fadeUp 0.8s forwards;
-animation-delay:1.4s;
+font-weight:600;
 }
 
 @media(max-width:768px){
-.hero-header{
-flex-direction:column;
-text-align:center;
-}
-.hero-header div{
-margin-bottom:20px;
-}
-.hero-header img{
-margin:auto;
-}
+.header-box{flex-direction:column;text-align:center;}
+.products{flex-direction:column;align-items:center;}
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero-header fade-in" style="animation-delay:0s;">
-
-  <div style="flex:1; min-width:250px; display:flex; align-items:center; gap:15px;">
-    <img src="pics/logo.jpg" alt="Chick'n Blossom Logo" 
-         style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
-    <div>
-      <h1>Chick'n Blossom</h1>
-      <p class="tagline">Siomai with a Healthy Twist</p>
-    </div>
-  </div>
-
-  <div style="flex:1; min-width:250px; text-align:right;">
-    <img src="pics/siomai.jpg" alt="Chick'n Blossom Siomai" 
-         style="max-width:60%; height:auto; border-radius:50px; box-shadow:0 8px 20px rgba(0,0,0,0.2);">
-  </div>
-
+<section id="home" class="hero-header">
+<div class="header-box">
+<div class="header-left">
+<img src="pics/logo.jpg" alt="Chick'n Blossom Logo">
+<h1>Chick'n Blossom</h1>
+<p class="tagline">Siomai with a Healthy Twist</p>
+</div>
+</div>
 </section>
 
-<section class="products">
-  <div class="card fade-in" style="animation-delay:0.4s;">
-    <h3>Fried Chick'n Blossom</h3>
-    <p class="price">₱20</p>
-    <p>4pcs</p>
-  </div>
-
-  <div class="card fade-in" style="animation-delay:0.6s;">
-    <h3>Steamed Chick'n Blossom</h3>
-    <p class="price">₱20</p>
-    <p>4pcs</p>
-  </div>
-
-  <div class="card fade-in" style="animation-delay:0.8s;">
-    <h3>Chick'n Blossom Special</h3>
-    <p class="price">₱40</p>
-    <p>5pcs siomai with a drink</p>
-  </div>
+<section id="about" class="about">
+<div class="about-box">
+<h2>About Chick'n Blossom</h2>
+<p>
+Chick'n Blossom offers delicious siomai made with chicken and banana blossom,
+providing a healthier twist to a Filipino favorite. Our mission is to serve
+affordable, nutritious, and satisfying food perfect for students and families.
+</p>
+<img src="pics/siomai.jpg" alt="Siomai">
+</div>
 </section>
 
-<section class="order fade-in" style="animation-delay:1s;">
+<section id="menu" class="products">
+<div class="card">
+<h3>Fried Chick'n Blossom</h3>
+<p class="price">₱20</p>
+<p>4pcs</p>
+</div>
+<div class="card">
+<h3>Steamed Chick'n Blossom</h3>
+<p class="price">₱20</p>
+<p>4pcs</p>
+</div>
+<div class="card">
+<h3>Chick'n Blossom Special</h3>
+<p class="price">₱40</p>
+<p>5pcs siomai with a drink</p>
+</div>
+</section>
+
+<section id="contact" class="order">
+<div class="order-box">
 <p>Contact us or visit our social media pages.</p>
-
 <p><strong>📞 0953-689-5712</strong></p>
-
 <button>Order Now</button>
-
 <div class="socials">
 <a href="https://www.facebook.com/profile.php?id=61582190765139">Facebook</a>
-<a href="#">Instagram</a>
-<a href="#">TikTok</a>
+<a href="https://www.instagram.com/chicknblossom?igsh=bmc3NzBsbzV5Y3E3">Instagram</a>
+<a href="https://www.tiktok.com/@chicknblossom?_r=1&_t=ZS-94ja4G2qLHZ">TikTok</a>
+</div>
 </div>
 </section>
 
 <footer>
 <p>© 2026 Chick'n Blossom</p>
 </footer>
+
+<script>
+function revealSequentially() {
+const header = document.querySelector('.header-box');
+const about = document.querySelector('.about-box');
+const cards = document.querySelectorAll('.card');
+const contact = document.querySelector('.order-box');
+const windowHeight = window.innerHeight;
+
+if(header.getBoundingClientRect().top < windowHeight - 100){
+header.classList.add('visible');
+}
+
+if(about.getBoundingClientRect().top < windowHeight - 100){
+about.classList.add('visible');
+}
+
+cards.forEach((card,i)=>{
+if(card.getBoundingClientRect().top < windowHeight - 100){
+setTimeout(()=>{card.classList.add('visible');}, i*300);
+}
+});
+
+if(contact.getBoundingClientRect().top < windowHeight - 100){
+contact.classList.add('visible');
+}
+}
+
+window.addEventListener('scroll', revealSequentially);
+window.addEventListener('load', revealSequentially);
+</script>
 
 </body>
 </html>
